@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include "io.h"
 
+void generalMenu(void);
+
 int main(void)
 	{
-		printf("Hello, World!\n");
+		generalMenu();
+		printf("hello");
 		return 0;
 	}
+
