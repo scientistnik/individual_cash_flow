@@ -5,7 +5,4 @@ individual_cash_flow.exe: $(OBJ)
 $(OBJ): io.h
 
 clean:
-#if [ ls *.o *~ ];	then \
-#rm *.o *~ 2> /dev/null \	
-#fi
-	rm $(OBJ) *~
+	rm -f $(OBJ) *~
