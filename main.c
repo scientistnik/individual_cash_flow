@@ -5,8 +5,10 @@ void generalMenu(void);
 
 int main(void)
 	{
-		generalMenu();
-
+		while(1)
+			{
+				generalMenu();
+			}
 		return 0;
 	}
 
