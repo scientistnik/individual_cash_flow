@@ -42,12 +42,16 @@ void
 		//unsigned int x, y;
 		//clearScreen();
 		//x = X_MAX/2; y = Y_MAX/2;
-		gotoxy(x,y);
+		//gotoxy(x,y);
 		printf("//--------------------------------//\n");
-		printf("Сделайте выбор:\n1.Расчет баланса\n2.Доходы\n3.Расходы\n4.Активы\n5.Пассивы\n");
-		printf("6.Задать файл истории\n");
+		printf("Прибыть (Profit): %d\n", profit);
+		printf("Расход (Expense): %d\n", expanse);
+		printf("Баланс (Balanse): %d\n", profit - expanse);
+		printf("Актив (active): %d\n", active);
+		printf("Пассив (Passive): %d\n", passive);
+		printf("//--------------------------------//\n");
+		printf("Сделайте выбор:\n1.Расчет баланса\n2.Доходы\n3.Расходы\n4.Активы\n5.Пассивы\n6.Задать файл истории\n0.Выход\n");
 		scanf("%d",&go_menu);
-		getchar();
 		if(go_menu == 0)	go_menu= EXIT;
 	}
 
@@ -66,9 +70,17 @@ void
 void 
 	menuProfit(void)
 	{
-		printf("%d\n", profit);
-		scanf("%d", &profit);
-		getchar();
+		unsigned int key;
+		printf("Profit: %d\n1)Добавить доход\n0)Выход\n", profit);
+		scanf("%d", &key);
+		if(key == 1)
+			{
+				printf("Введите величину добавляемого дохода:\n");
+				scanf("%d",&key);
+				profit += key;
+				printf("Profit: %d\n", profit);
+			}
+		go_menu = GENERAL;
 	}
 
 void

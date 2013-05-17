@@ -14,6 +14,11 @@ enum {
 	EXIT
 };
 
+struct CellStruct {
+				char* name;
+				unsigned long number;
+};
+
 void clearScreen(void);
 void gotoxy(int x, int y);
 
