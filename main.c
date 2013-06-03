@@ -60,7 +60,7 @@ void
 	{
 		FILE* file;
 		char* str;
-		int buf;
+		char* buf;
 		int i;
 		balanse = active - passive;
 	  //file = fopen("./history/012013.hry","w");
@@ -68,7 +68,7 @@ void
 		//fclose(file);
 		//file = openBalans("./history/012013.hry");
 		//printf("Активы: %d\nПассивы: %d\nБаланс: %d\n", profit, expanse, balanse);
-		if(!(file = fopen("./history/012013.hry","r")))
+		if((file = fopen("./history/012013.hry","r"))==NULL)
 			{
 				printf("Error file!\n");
 				go_menu = GENERAL;
@@ -78,10 +78,7 @@ void
 		for(i=0;(str = fgetc(file));i++)
 			printf("%c",str);
 		*/
-		buf = str;
-		buf = fgetc(file);
-		*str = *buf;
-		buf = fgetc(file);
+		fgets(buf, 1, file);
 		*(str+1) = *buf;
 		*(str+2) = '\0';
 		printf("%c\n",str);
