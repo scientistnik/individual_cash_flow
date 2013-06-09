@@ -11,6 +11,7 @@ enum {
 	EXPANSE,
 	ACTIVE,
 	PASSIVE,
+	SETTINGS,
 	EXIT
 };
 

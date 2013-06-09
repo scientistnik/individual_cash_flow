@@ -10,6 +10,7 @@ int expanse = 4;
 int balanse = -2;
 
 void generalMenu(void);
+void menuStrrings(void);
 void menuBalans(void);
 void menuProfit(void);
 void menuExpanse(void);
@@ -30,10 +31,74 @@ int main(void)
 					case EXPANSE:	menuExpanse();	break;
 					case ACTIVE:	menuActive();		break;
 					case PASSIVE: menuPassive();	break;
+					case SETTINGS: menuSettings();break;
 					default:break;
 					}
 			}
 		return 0;
+	}
+
+enum Balanse_t {
+	QNT_PROFIT,
+	QNT_EXPANCE,
+	QNT_ACTIVE,
+	QNT_PASSIVE
+};
+
+void
+ menuSettings(void)
+	{
+		FILE *file;
+		char str[50];
+		int i;
+		char number;
+		enum Balanse_t select_qnt=QNT_PROFIT;
+
+		file = fopen("./history/0102013.hry","r");
+		if(file == NULL)
+			{
+				printf("Error file!");
+				return 1;
+			}
+		while(fgets(str, 50, file) )
+			{
+				if(*str == "[PROFIT]") 
+					{
+						select_qnt = QNT_PROFIT;
+						continue;
+					}
+				else if(*str == "[EXPANCE]")
+					{
+						select_qnt = QNT_EXPANCE;
+						continue;
+					}
+				else if(*str == "[ACTIVE]")
+					{
+						select_qnt = QNT_ACTIVE;
+						continue;
+					}
+				else if(*str == "[PASSIVE]")
+					{
+						select_qnt = QNT_PASSIVE;
+						continue;
+					}
+
+				for(i=0; str[i]!=':'; i++);
+				while( (str[i]!='\0')&& (str[i]!='\n'))
+					{
+						number = number*10 + str[i] - '0';
+						i++;
+					}
+				
+				switch(select_qnt)
+					{
+					case QNT_PROFIT:	profit +=number; break;
+					case QNT_EXPANCE:	expanse+=number; break;
+					case QNT_ACTIVE:	active +=number; break;
+					case QNT_PASSIVE:	passive+=number; break;
+					default:break;
+					}
+			}
 	}
 
 void 
@@ -78,10 +143,12 @@ void
 		for(i=0;(str = fgetc(file));i++)
 			printf("%c",str);
 		*/
+		/*
 		fgets(buf, 1, file);
 		*(str+1) = *buf;
 		*(str+2) = '\0';
 		printf("%c\n",str);
+		*/
 		go_menu = GENERAL;
 	}
 
