@@ -1,8 +1,8 @@
-cc = gcc
-OBJ = main.o io.o
-individual_cash_flow.exe: $(OBJ)
-	cc -o individual_cash_flow.exe $(OBJ)
-$(OBJ): io.h
+CC = gcc
+OBJ = main.o
+individual_cash_flow.exe: main.c
+	$(CC) main.c -o individual_cash_flow.exe
+$(OBJ): 
 
 clean:
-	rm -f $(OBJ) *~
+	rm -f $(OBJ) *~ *.exe *.o
