@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <curses.h>
+#include <iostream>
 
 enum {
 	INCOME=1,
@@ -13,32 +12,34 @@ int income, expense, active, passive;
 
 void Menu(void)
 {
-	printf("\033[2J"); /* Clear the entire screen. */ 
-	printf("\033[0;0f"); /* Move cursor to the top left hand corner */ 
-	printf("\n1.Income: \t%6d", income);
-	printf("\n2.Expanse: \t%6d", expense);
-	printf("\n3.Active: \t%6d", active);
-	printf("\n4.Passive: \t%6d\n", passive);
-	printf("5.EXIT\n");
-	printf("Your choise: ");
+	using std::cout;
+	using std::endl;
+	cout << "\n1.Income: \t"<< income << endl;
+	cout << "2.Expanse: \t"<< expense << endl;
+	cout << "3.Active: \t" << active << endl;
+	cout << "4.Passive: \t" << passive<< endl;
+	cout << "5.EXIT" << endl;
+	cout << "Your choise: ";
 }
 
 int main(int argc, char **argv)
 {
 	int buf, choise;
+	using std::cin;
+	using std::cout;
 	income = expense = active = passive = 0;
 	for(;;)
 	{
 		switch(choise)
 		{
-			case INCOME: printf("Enter Add income: "); scanf("%d",&buf); income+= buf; break;
-			case EXPENSE: printf("Enter Add expense: "); scanf("%d",&buf); expense+= buf; break;
-			case ACTIVE: printf("Enter Add active: "); scanf("%d",&buf); active+= buf; break;
-			case PASSIVE: printf("Enter Add passive: "); scanf("%d",&buf); passive+= buf; break;
+			case INCOME: cout << "Enter Add income: "; cin >> buf; income+= buf; break;
+			case EXPENSE: cout << "Enter Add expense: "; cin >> buf; expense+= buf; break;
+			case ACTIVE: cout << "Enter Add active: "; cin >> buf; active+= buf; break;
+			case PASSIVE: cout << "Enter Add passive: "; cin >> buf; passive+= buf; break;
 			case EXIT: return 0;
 			default: break;
 		}
 		Menu();
-		scanf("%d", &choise);
+		cin >> choise;
 	}
 }
