@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
-public class individual_cash_flow {
-	static final int INCOME = 1, EXPENSE = 2, ACTIVE = 3, PASSIVE = 4;
-	static int income = 0, expense = 0, active = 0, passive = 0;
+public class individual_cash_flow 
+{
+	final int INCOME = 1, EXPENSE = 2, ACTIVE = 3, PASSIVE = 4;
+	int income = 0, expense = 0, active = 0, passive = 0;
 	individual_cash_flow()
 	{
 		income = expense = active = passive = 0;
 	}
 
-	static void MenuDraw()
+	void MenuDraw()
 	{
 		System.out.print("\033[2J\033[1;1H");
 		System.out.println(INCOME + ". Income = " + income);
@@ -19,11 +20,18 @@ public class individual_cash_flow {
 		System.out.print("Your choice: ");
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
+		individual_cash_flow BeginCash = new individual_cash_flow();
+		BeginCash.MainCycle();
+	}
+
+	void MainCycle()
+	{
+		Scanner in = new Scanner(System.in);
 		while(true)
 		{
 			MenuDraw();
-			Scanner in = new Scanner(System.in);
 			int key = in.nextInt();
 			switch(key)
 			{
