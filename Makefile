@@ -1,8 +1,10 @@
-CC = g++
+CC = javac
+OBJ=individual_cash_flow
 
-individual_cash_flow.exe: main.cpp
-	$(CC) main.cpp -o individual_cash_flow.exe
-$(OBJ): 
-
+individual_cash_flow.class: $(OBJ).java
+	clear
+	$(CC) $(OBJ).java
+go:
+	java $(OBJ)
 clean:
-	rm -f $(OBJ) *~ *.exe *.o
+	rm -f $(OBJ).class *~ *.class *.o
