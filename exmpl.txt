@@ -1,0 +1,7 @@
+[INCOME]
+12:qwerty
+12:ytrewq
+[EXPENSE]
+[ACTIVE]
+[PASSIVE]
+23:Тут просто проверка адекватности)
